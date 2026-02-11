@@ -1,0 +1,12 @@
+# VIP Contact List
+# Messages from these contacts always escalate to Urgent priority
+
+contacts:
+  # - name: "Manager Name"
+  #   slack_id: "U12345"
+  #   email: "manager@company.com"
+  #   reason: "Direct manager"
+
+  # - name: "CTO"
+  #   email: "cto@company.com"
+  #   reason: "Executive sponsor"

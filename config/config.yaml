@@ -1,0 +1,36 @@
+# Personal OS Configuration
+# Copy to config.local.yaml and fill in your values
+
+pulse:
+  schedule:
+    morning: "07:00"
+    midday: "12:00"
+    evening: "17:30"
+  timezone: "Europe/Paris"
+
+scout:
+  channels:
+    - "#team-updates"
+    - "#incidents"
+  urgency_keywords:
+    - "blocking"
+    - "ASAP"
+    - "urgent"
+    - "production"
+    - "down"
+  notification_method: "terminal"  # terminal | desktop
+
+horizon:
+  lookahead_hours: 24
+  prep_buffer_minutes: 15
+  meeting_brief_depth: "detailed"  # summary | detailed
+
+focus:
+  max_action_items: 10
+  carry_forward_max_age: 5  # pulses before auto-drop
+  output_formats:
+    - terminal
+    - html
+  audio:
+    enabled: false
+    voice: "alloy"
