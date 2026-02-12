@@ -1,4 +1,4 @@
-# Personal OS Configuration
+# Personal OS Configuration — AWS Account Team Edition
 # Copy to config.local.yaml and fill in your values
 
 pulse:
@@ -34,3 +34,91 @@ focus:
   audio:
     enabled: false
     voice: "alloy"
+
+data:
+  enabled: true
+  sync_on_pulse: true               # refresh context before each pulse
+  sync_interval_hours: 6            # skip sync if last sync was within this window
+  sources_file: "config/data-sources.yaml"
+  rules_file: "config/data-rules.md"
+  context_dir: "data/context"
+  templates_dir: "data/templates"
+  monitor:
+    enabled: true
+    history_pulses: 10              # historical values to keep for trend detection
+  cli:
+    max_results: 100
+    timeout_seconds: 30
+
+# ── Sales Agents ────────────────────────────────────────────
+
+sales_intel:
+  enabled: true
+  enrichment_provider: "apollo"      # apollo | clearbit
+  linkedin_scraping: true            # requires Chrome 9222
+  signal_keywords:
+    - "data governance"
+    - "cloud migration"
+    - "AI adoption"
+    - "modernization"
+    - "digital transformation"
+    - "machine learning"
+    - "data lake"
+    - "serverless"
+  signal_score_threshold: 30         # minimum score to flag as high-intent
+  dossier_dir: "data/context/sales-intel"
+  salesforce_writeback: true         # push enrichment back to CRM
+  stale_deal_days: 14               # flag deals with no activity
+  max_enrichments_per_pulse: 20     # rate limit protection
+
+outreach:
+  enabled: true
+  channels:
+    - email
+    - linkedin
+    - call_script
+  auto_followup:
+    meeting_recap: true              # generate after every meeting
+    objection_response: true         # match to battlecards
+    stale_re_engagement: true        # re-engage dormant deals
+  battlecard_dir: "data/context/battlecards"
+  case_study_dir: "data/context/case-studies"
+  brand_voice_file: "config/brand-voice.md"
+  templates_dir: "data/templates/outreach"
+  daily_targets:
+    emails: 20
+    linkedin_messages: 10
+    call_scripts: 5
+  review_mode: "queue"               # queue (human approval) | auto
+  generation:
+    model: "claude-sonnet-4-5-20250929"
+    temperature_outreach: 0.7
+    temperature_followup: 0.3
+    max_tokens: 500
+
+deal_accel:
+  enabled: true
+  roi_benchmarks_file: "config/roi-benchmarks.yaml"
+  case_study_dir: "data/context/case-studies"
+  proposal_templates_dir: "data/templates/proposals"
+  deck_templates_dir: "data/templates/decks"
+  deck_engine: "marp"                # marp | revealjs
+  output_dir: "output"
+  health_scoring:
+    stale_stage_days:
+      Prospecting: 14
+      Qualification: 21
+      Proposal: 14
+      Negotiation: 10
+    engagement_gap_warning_days: 7
+    engagement_gap_critical_days: 14
+    minimum_stakeholders: 2
+  pipeline:
+    coverage_ratio_target: 3.0       # pipeline / quota ratio
+    quarter_end_alert_days: 30       # flag deals closing within N days
+  generation:
+    proposal_model: "claude-opus-4-6"
+    deck_model: "claude-sonnet-4-5-20250929"
+    temperature: 0.3
+    auto_generate_proposals: true    # for Proposal-stage deals
+    auto_generate_decks: true        # for meetings with external attendees

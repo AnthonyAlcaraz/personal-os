@@ -5,3 +5,11 @@ config/sf-key.pem
 output/
 *.log
 state/
+
+# DataAgent generated context (rebuilt by sync)
+data/context/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
