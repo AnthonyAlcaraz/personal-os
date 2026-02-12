@@ -1,0 +1,9 @@
+# {{table.name}}
+
+**Dataset:** `{{schema.name}}`
+
+## Columns
+
+{{#each table.columns}}
+- **{{this.name}}** ({{this.type}}){{#if this.description}} — {{this.description}}{{/if}}
+{{/each}}

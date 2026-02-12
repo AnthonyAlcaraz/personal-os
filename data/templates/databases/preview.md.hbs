@@ -1,0 +1,9 @@
+# {{table.name}} — Preview
+
+**Dataset:** `{{schema.name}}`
+
+## Sample Rows ({{length table.preview}})
+
+{{#each table.preview}}
+- {{json this}}
+{{/each}}

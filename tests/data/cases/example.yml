@@ -1,0 +1,6 @@
+# Example test case — replace with your actual data source and queries
+name: total_row_count
+prompt: "How many rows are in the orders table?"
+source: local-analytics
+sql: |
+  SELECT COUNT(*) as value FROM orders

@@ -1,7 +1,7 @@
 // Focus Agent — Priority filter and briefing generator
 // See specs/FOCUS.md for full specification
 
-export async function run(config, state, scoutResult, horizonResult, dataResult) {
+export async function run(config, state, scoutResult, horizonResult, dataResult, salesIntelResult, outreachResult, dealAccelResult) {
   // TODO: Implement full priority matrix
   // 1. Merge scout + horizon + data outputs
   // 2. Apply priority matrix (urgency x importance)

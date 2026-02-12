@@ -1,0 +1,21 @@
+{
+  "name": "personal-os",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AI-powered workflow automation with scheduled Pulse briefings",
+  "scripts": {
+    "pulse": "node scheduler/orchestrator.js",
+    "data-cli": "node scheduler/data-cli.js",
+    "data-sync": "node -e \"import('./agents/data/sync.js').then(m => m.syncContext({sync_on_pulse: true}, {}))\"",
+    "data-test": "node tests/data/runner.js",
+    "setup-python": "pip install -r integrations/database/requirements.txt"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "handlebars": "^4.7.8",
+    "@anthropic-ai/sdk": "^0.39.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
